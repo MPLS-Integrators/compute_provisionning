@@ -1,0 +1,28 @@
+---
+# This playbook contains common plays that will be run on all nodes.
+- name: Execute common tasks
+  hosts: all
+  remote_user: root
+
+  tasks:
+
+  - name: Copy SSH keys
+    copy: src=/Users/iosadchuk/Documents/mi/lab/provisionning/common/authorized_keys dest=/root/.ssh/authorized_keys owner=root group=root mode=0600
+
+  - name: Disable password authentication on a node
+    copy: src=/Users/iosadchuk/Documents/mi/lab/provisionning/common/ssh_config dest=/etc/ssh/ssh_config owner=root group=root mode=0611
+    notify:
+      - restart ssh
+
+  - name: Install vim
+    yum: name=vim state=latest
+
+  - name: Install traceroute
+    yum: name=traceroute state=latest
+
+  - name: Install MTR
+    yum: name=mtr state=latest
+
+  handlers:
+  - name: restart ssh
+    service: name=ssh state=reloaded
