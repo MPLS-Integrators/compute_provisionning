@@ -1,2 +1,2 @@
 # compute_provisionning
-Lab deployment
+Ansible lab deployment
