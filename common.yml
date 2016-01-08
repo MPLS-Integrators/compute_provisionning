@@ -10,7 +10,7 @@
     copy: src=/Users/iosadchuk/Documents/mi/lab/provisionning/common/authorized_keys dest=/root/.ssh/authorized_keys owner=root group=root mode=0600
 
   - name: Disable password authentication on a node
-    copy: src=/Users/iosadchuk/Documents/mi/lab/provisionning/common/ssh_config dest=/etc/ssh/ssh_config owner=root group=root mode=0611
+    copy: src=/Users/iosadchuk/Documents/mi/lab/provisionning/common/ssh_config dest=/etc/ssh/ssh_config owner=root group=root mode=0644
     notify:
       - restart ssh
 
